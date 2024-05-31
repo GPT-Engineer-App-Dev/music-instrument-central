@@ -1,5 +1,6 @@
 import { Box, Button, Container, Flex, Heading, HStack, IconButton, Image, Link, Stack, Text, VStack } from "@chakra-ui/react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Link as RouterLink } from "react-router-dom";
 
 const Index = () => {
   return (
@@ -8,8 +9,10 @@ const Index = () => {
       <Flex as="nav" bg="gray.800" color="white" p={4} justifyContent="space-between" alignItems="center">
         <Heading size="md">Music Store</Heading>
         <HStack spacing={8}>
-          <Link href="#home">Home</Link>
-          <Link href="#shop">Shop</Link>
+          <Link as={RouterLink} to="/">Home</Link>
+          <Link as={RouterLink} to="/category/guitars">Guitars</Link>
+          <Link as={RouterLink} to="/category/keyboards">Keyboards</Link>
+          <Link as={RouterLink} to="/category/drums">Drums</Link>
           <Link href="#about">About Us</Link>
           <Link href="#contact">Contact</Link>
         </HStack>
