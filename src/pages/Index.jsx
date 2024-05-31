@@ -1,8 +1,11 @@
 import { Box, Button, Container, Flex, Heading, HStack, IconButton, Image, Link, Stack, Text, VStack } from "@chakra-ui/react";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaInstagram, FaShoppingCart } from "react-icons/fa";
 import { Link as RouterLink } from "react-router-dom";
+import { useCart } from "../hooks/useCart";
 
 const Index = () => {
+  const { cartItems } = useCart();
+
   return (
     <Container maxW="container.xl" p={0}>
       {/* Navigation Bar */}
@@ -15,6 +18,10 @@ const Index = () => {
           <Link as={RouterLink} to="/category/drums">Drums</Link>
           <Link href="#about">About Us</Link>
           <Link href="#contact">Contact</Link>
+          <HStack spacing={2}>
+            <IconButton as={RouterLink} to="/cart" icon={<FaShoppingCart />} aria-label="Cart" />
+            <Text>{cartItems.length}</Text>
+          </HStack>
         </HStack>
       </Flex>
 

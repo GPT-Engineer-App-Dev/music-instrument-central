@@ -1,4 +1,5 @@
 import { Box, Button, Container, Flex, Heading, Image, Text, VStack } from "@chakra-ui/react";
+import { useCart } from "../hooks/useCart";
 import { useParams } from "react-router-dom";
 
 const products = {
@@ -20,6 +21,8 @@ const Category = () => {
   const { categoryName } = useParams();
   const categoryProducts = products[categoryName] || [];
 
+  const { addToCart } = useCart();
+
   return (
     <Container maxW="container.xl" p={8}>
       <Heading size="xl" textAlign="center" mb={8}>{categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}</Heading>
@@ -30,7 +33,7 @@ const Category = () => {
             <Box p={6}>
               <Heading size="md">{product.name}</Heading>
               <Text mt={4}>{product.description}</Text>
-              <Button mt={4} colorScheme="teal">Buy Now</Button>
+              <Button mt={4} colorScheme="teal" onClick={() => addToCart(product)}>Add to Cart</Button>
             </Box>
           </Box>
         ))}
